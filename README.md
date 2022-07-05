@@ -348,24 +348,24 @@ accuracy:80.044
 
 ### Training Performance
 
-| Parameters                 | Ascend                                        | GPU                              |
-| -------------------------- | --------------------------------------------- | -------------------------------- |
-| Model Version              | InceptionV4                                   | InceptionV4                      |
-| Resource                   | Ascend 910; cpu 2.60GHz, 192cores; memory 755G; OS Euler2.8  | NV SMX2 V100-32G                 |
-| uploaded Date              | 11/04/2020                                    | 03/05/2021                       |
-| MindSpore Version          | 1.0.0                                         | 1.0.0                            |
-| Dataset                    | 1200k images                                  | 1200K images                     |
-| Batch_size                 | 128                                           | 128                              |
-| Training Parameters        | src/model_utils/default_config.yaml (Ascend)    | src/model_utils/default_config.yaml (GPU)|
-| Optimizer                  | RMSProp                                       | RMSProp                          |
-| Loss Function              | SoftmaxCrossEntropyWithLogits                 | SoftmaxCrossEntropyWithLogits    |
-| Outputs                    | probability                                   | probability                      |
-| Loss                       | 0.98486                                       | 0.8144                           |
-| Accuracy (8p)              | ACC1[79.85%] ACC5[94.60%]                     | ACC1[80.09%] ACC5[94.57%]        |
-| Total time (8p)            | 20h                                           | 95h                              |
-| Params (M)                 | 153M                                          | 153M                             |
-| Checkpoint for Fine tuning | 2135M                                         | 489M                             |
-| Scripts                    | [inceptionv4 script](https://gitee.com/mindspore/models/tree/master/official/cv/inceptionv4) | [inceptionv4 script](https://gitee.com/mindspore/models/tree/master/official/cv/inceptionv4) |
+| Parameters                 | GPU                              |
+| -------------------------- |  -------------------------------- |
+| Model Version              |  InceptionV4                      |
+| Resource                   |  NV SMX2 V100-32G                 |
+| uploaded Date              | 03/05/2021                       |
+| MindSpore Version          | 1.0.0                            |
+| Dataset                    |  1200K images                     |
+| Batch_size                 |  128                              |
+| Training Parameters        |src/model_utils/default_config.yaml (GPU)|
+| Optimizer                  |  RMSProp                          |
+| Loss Function              |  SoftmaxCrossEntropyWithLogits    |
+| Outputs                    |  probability                      |
+| Loss                       |  0.8144                           |
+| Accuracy (8p)              |  ACC1[80.09%] ACC5[94.57%]        |
+| Total time (8p)            | 95h                              |
+| Params (M)                 | 153M                             |
+| Checkpoint for Fine tuning |  489M                             |
+| Scripts                    | [inceptionv4 script](https://gitee.com/mindspore/models/tree/master/official/cv/inceptionv4) |
 
 #### Inference Performance
 
