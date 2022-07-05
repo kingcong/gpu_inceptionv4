@@ -233,22 +233,7 @@ Major parameters in train.py and config.py are:
 You can start training using python or shell scripts. The usage of shell scripts as follows:
 
 
-```yaml
-ds_type:imagenet
-or
-ds_type:cifar10
-Take training cifar10 as an example, the ds_type parameter is set to cifar10
-````
-
-```bash
-# distribute training example(8p)
-
-# standalone training
-```
-
-> Notes:
->
-> This is processor cores binding operation regarding the `device_num` and total processor numbers. If you are not expect to do it, remove the operations `taskset` in `scripts/run_distribute_train.sh`
+`
 
 - GPU:
 
@@ -257,12 +242,7 @@ Take training cifar10 as an example, the ds_type parameter is set to cifar10
 bash scripts/run_distribute_train_gpu.sh DATA_PATH
 ```
 
-- CPU:
 
-```bash
-# standalone training example with shell
-bash scripts/run_standalone_train_cpu.sh DATA_PATH
-```
 
 ### Launch
 
@@ -286,14 +266,7 @@ bash scripts/run_standalone_train_cpu.sh DATA_PATH
 Training result will be stored in the example path. Checkpoints will be stored at `ckpt_path` by default, and training log  will be redirected to `./log.txt` like following.
 
 
-```python
-epoch: 1 step: 1251, loss is 5.4833196
-Epoch time: 520274.060, per step time: 415.887
-epoch: 2 step: 1251, loss is 4.093194
-Epoch time: 288520.628, per step time: 230.632
-epoch: 3 step: 1251, loss is 3.6242008
-Epoch time: 288507.506, per step time: 230.622
-```
+
 
 - GPU
 
@@ -313,8 +286,6 @@ Epoch time: 1423009.501, per step time: 1137.498
 You can start training using python or shell scripts. The usage of shell scripts as follows:
 
 
-```bash
-```
 
 - GPU
 
@@ -338,9 +309,6 @@ You can start training using python or shell scripts. The usage of shell scripts
 Evaluation result will be stored in the example path, you can find result like the following in `eval.log`.
 
 
-```python
-metric: {'Loss': 0.9849, 'Top1-Acc':0.7985, 'Top5-Acc':0.9460}
-```
 
 - GPU(8p)
 
@@ -380,12 +348,15 @@ accuracy:80.044
 
 ### Training Performance
 
+| Parameters                 | Ascend                                        | GPU                              |
 | -------------------------- | --------------------------------------------- | -------------------------------- |
 | Model Version              | InceptionV4                                   | InceptionV4                      |
+| Resource                   | Ascend 910; cpu 2.60GHz, 192cores; memory 755G; OS Euler2.8  | NV SMX2 V100-32G                 |
 | uploaded Date              | 11/04/2020                                    | 03/05/2021                       |
 | MindSpore Version          | 1.0.0                                         | 1.0.0                            |
 | Dataset                    | 1200k images                                  | 1200K images                     |
 | Batch_size                 | 128                                           | 128                              |
+| Training Parameters        | src/model_utils/default_config.yaml (Ascend)    | src/model_utils/default_config.yaml (GPU)|
 | Optimizer                  | RMSProp                                       | RMSProp                          |
 | Loss Function              | SoftmaxCrossEntropyWithLogits                 | SoftmaxCrossEntropyWithLogits    |
 | Outputs                    | probability                                   | probability                      |
@@ -398,24 +369,22 @@ accuracy:80.044
 
 #### Inference Performance
 
-| ------------------- | --------------------------------------------- | ---------------------------------- |
-| Model Version       | InceptionV4                                   | InceptionV4                        |
-| Uploaded Date       | 11/04/2020                                    | 03/05/2021                         |
-| MindSpore Version   | 1.0.0                                         | 1.0.0                              |
-| Dataset             | 50k images                                    | 50K images                         |
-| Batch_size          | 128                                           | 128                                |
-| Outputs             | probability                                   | probability                        |
-| Accuracy            | ACC1[79.85%] ACC5[94.60%]                     | ACC1[80.09%] ACC5[94.57%]          |
-| Total time          | 2mins                                         | 2mins                              |
-| Model for inference | 2135M (.ckpt file)                            | 489M (.ckpt file)                  |
+| Parameters          |  GPU                                |
+| ------------------- | ---------------------------------- |
+| Model Version       |InceptionV4                        |
+| Resource            |  NV SMX2 V100-32G                   |
+| Uploaded Date       |  03/05/2021                         |
+| MindSpore Version   |  1.0.0                              |
+| Dataset             |  50K images                         |
+| Batch_size          | 128                                |
+| Outputs             |  probability                        |
+| Accuracy            |  ACC1[80.09%] ACC5[94.57%]          |
+| Total time          |  2mins                              |
+| Model for inference |  489M (.ckpt file)                  |
 
 #### Training performance results
 
-| :--------: | :---------------: |
-|     1p     |     556 img/s     |
 
-| :--------: | :---------------: |
-|     8p     |     4430 img/s    |
 
 | **GPU**    | train performance |
 | :--------: | :---------------: |
